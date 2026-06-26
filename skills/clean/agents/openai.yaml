@@ -1,0 +1,7 @@
+interface:
+  display_name: "Clean"
+  short_description: "Clean dirty trees and prep commits"
+  brand: "memor.re"
+  icon_small: "./assets/clean.svg"
+  icon_large: "./assets/clean.svg"
+  default_prompt: "Use $clean to classify dirty work, port safe branch deltas, validate, update handoff, and create a focused ready-to-push commit."

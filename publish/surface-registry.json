@@ -1,0 +1,64 @@
+{
+  "$schema": "./surface-registry.schema.json",
+  "version": "0.1.0",
+  "description": "Provider-agnostic registry of agent-IDE surfaces memor.re projects its canonical skills onto. Adding a new IDE is a new entry here plus a generator target — never a rewrite. The hosted MCP backend is shared by every surface; auth is server-side OAuth, so no surface needs a per-container token.",
+  "canonicalSource": {
+    "skills": "../skills",
+    "note": "Provider-neutral skill canon. Each skill carries SKILL.md plus per-surface agent metadata and an icon asset. Projections are generated from here; do not hand-edit projected manifests."
+  },
+  "sharedBackend": {
+    "kind": "hosted-mcp",
+    "url": "https://memor.re/api/memor-re/mcp",
+    "auth": "oauth",
+    "authStandard": "clerk-oauth-dcr",
+    "bearerTokenEnvVar": "MEMOR_RE_PLUGIN_TOKEN",
+    "bearerTokenRequired": false,
+    "note": "OAuth is the standard path (browser sign-in at connect time). The bearer env var is a legacy fallback only and is never user-provisioned in the OAuth path. No value is ever committed."
+  },
+  "distribution": {
+    "model": "public-shell-private-backend",
+    "publicRepo": "memor-re/agent-surface",
+    "publicRepoStatus": "proposed",
+    "sourceOfTruth": "memor-re/platform",
+    "mirror": "one-way-on-release",
+    "supersedes": "docs/operations/memor_re_private_plugin_portability_20260613.md",
+    "decisionRecord": "docs/decisions/ADR-009-provider-agnostic-public-plugin-distribution.md"
+  },
+  "surfaces": [
+    {
+      "id": "claude-code",
+      "displayName": "Claude Code",
+      "status": "active",
+      "manifest": ".claude-plugin/plugin.json",
+      "marketplace": ".claude-plugin/marketplace.json",
+      "marketplaceSibling": ".agents/plugins/marketplace.claude-code.json",
+      "agentMetadataFile": "agents/claude.yaml",
+      "publicInstallSource": { "source": "github", "repo": "memor-re/agent-surface" },
+      "installAuth": "oauth-at-connect",
+      "skillInvocation": "slash-command",
+      "notes": "marketplace name and plugin name both 'memor-re' so enabledPlugins key resolves to memor-re@memor-re."
+    },
+    {
+      "id": "codex",
+      "displayName": "Codex",
+      "status": "active",
+      "manifest": ".codex-plugin/plugin.json",
+      "marketplace": ".agents/plugins/marketplace.json",
+      "marketplaceSibling": ".agents/plugins/marketplace.json",
+      "agentMetadataFile": "agents/openai.yaml",
+      "publicInstallSource": { "source": "github", "repo": "memor-re/agent-surface" },
+      "installAuth": "oauth-at-connect",
+      "skillInvocation": "skill",
+      "notes": "Codex-format .mcp.json (hosted URL) lives at plugin root."
+    }
+  ],
+  "extensionContract": {
+    "howToAddASurface": [
+      "1. Append a surface entry here with its manifest path, agent-metadata filename, and public install source.",
+      "2. Add a generator target that projects the canonical skills into that surface's manifest format.",
+      "3. Add a validator (mirror of openai:plugin:validate / plugin:surfaces:check) for the new surface.",
+      "4. The shared hosted-MCP backend and OAuth auth require NO change — every surface reuses them."
+    ],
+    "invariant": "No surface may require a per-container GitHub token or embed any secret. All auth is server-side OAuth against the shared hosted MCP."
+  }
+}

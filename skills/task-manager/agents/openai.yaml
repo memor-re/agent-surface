@@ -1,0 +1,7 @@
+interface:
+  display_name: "Task Manager"
+  short_description: "memor.re Council helper"
+  brand: "memor.re Council"
+  icon_small: "./assets/task-manager.svg"
+  icon_large: "./assets/task-manager.svg"
+  default_prompt: "Use $task-manager to turn next steps into discrete task containers with owners, gates, dependencies, and validation."

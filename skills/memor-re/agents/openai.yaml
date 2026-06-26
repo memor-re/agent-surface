@@ -1,0 +1,7 @@
+interface:
+  display_name: "memor.re"
+  short_description: "Front door to the memor.re canon: route, teach the canon, set memory mode"
+  brand: "memor.re"
+  icon_small: "./assets/memor-re.svg"
+  icon_large: "./assets/memor-re.svg"
+  default_prompt: "Use $memor-re to route into Council, teach every agent something, or set your memory mode."

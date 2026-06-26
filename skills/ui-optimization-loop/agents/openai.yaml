@@ -1,0 +1,7 @@
+interface:
+  display_name: "UI Optimization Loop"
+  short_description: "Turn UI evidence into bounded design learning."
+  brand: "memor.re"
+  icon_small: "./assets/ui-optimization-loop.svg"
+  icon_large: "./assets/ui-optimization-loop.svg"
+  default_prompt: "Use $ui-optimization-loop to turn Refero evidence, product feedback, validation, and a persisted learning decision into UI direction."

@@ -1,0 +1,7 @@
+interface:
+  display_name: "memor.re"
+  short_description: "Council, delivery, handoff, and product-operating workflows for Codex"
+  brand: "memor.re"
+  icon_small: "./assets/memor-re-mark.svg"
+  icon_large: "./assets/memor-re-mark.svg"
+  default_prompt: "Use memor.re Council to route this product decision."

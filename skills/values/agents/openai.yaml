@@ -1,0 +1,7 @@
+interface:
+  display_name: "Values"
+  short_description: "memor.re Council specialist"
+  brand: "memor.re Council"
+  icon_small: "./assets/values.svg"
+  icon_large: "./assets/values.svg"
+  default_prompt: "Use $values to bring in the Values specialist for privacy, consent, dignity, fairness, governance, and public-trust review."

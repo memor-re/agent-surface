@@ -1,0 +1,7 @@
+interface:
+  display_name: "Benefactor"
+  short_description: "memor.re Council specialist"
+  brand: "memor.re Council"
+  icon_small: "./assets/benefactor.svg"
+  icon_large: "./assets/benefactor.svg"
+  default_prompt: "Use $benefactor to bring in the Benefactor specialist for spend, compensation, budget, infrastructure-cost, and resource-risk decisions."

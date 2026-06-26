@@ -1,0 +1,7 @@
+interface:
+  display_name: "Closer"
+  short_description: "memor.re Council specialist"
+  brand: "memor.re Council"
+  icon_small: "./assets/closer.svg"
+  icon_large: "./assets/closer.svg"
+  default_prompt: "Use $closer to bring in the Closer specialist for sequencing, triage, follow-through, handoffs, release readiness, dirty-tree discipline, validation ladders, and explicit approval gates."

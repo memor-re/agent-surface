@@ -1,0 +1,7 @@
+interface:
+  display_name: "memor.re Learn"
+  short_description: "memor.re learning modes"
+  brand: "memor.re"
+  icon_small: "./assets/learn.svg"
+  icon_large: "./assets/learn.svg"
+  default_prompt: "Use $learn to choose the right memor.re learning mode: observe, document, measure, recommend, or hold autonomy behind approval."

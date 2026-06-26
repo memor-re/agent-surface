@@ -1,0 +1,34 @@
+{
+  "name": "memor-re",
+  "environment": "production",
+  "authority": {
+    "normalUsersInstallAllowed": true,
+    "sourceAuthority": true
+  },
+  "interface": {
+    "displayName": "memor.re"
+  },
+  "x-memor-re": {
+    "environment": "production",
+    "hostedMcpProofRequired": true,
+    "mcpEndpointPolicy": "hosted_mcp_preferred",
+    "normalUsersInstallAllowed": true,
+    "pluginId": "memor-re@memor-re",
+    "runtimeAuthority": "production",
+    "sourceAuthority": true,
+    "surfaceRegistryId": "claude-code-plugin-projection"
+  },
+  "plugins": [
+    {
+      "name": "memor-re",
+      "source": "./",
+      "skills": "./skills/",
+      "environment": "production",
+      "x-memor-re": {
+        "pluginId": "memor-re@memor-re",
+        "runtimeAuthority": "production",
+        "sourceAuthority": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Ghosthunter"
+  short_description: "Clean stale source residue"
+  brand: "memor.re"
+  icon_small: "./assets/ghosthunter.svg"
+  icon_large: "./assets/ghosthunter.svg"
+  default_prompt: "Use $ghosthunter to clean active memor.re docs while preserving provenance evidence."

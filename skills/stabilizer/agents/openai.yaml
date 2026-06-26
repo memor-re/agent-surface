@@ -1,0 +1,7 @@
+interface:
+  display_name: "Stabilizer"
+  short_description: "memor.re Council specialist"
+  brand: "memor.re Council"
+  icon_small: "./assets/stabilizer.svg"
+  icon_large: "./assets/stabilizer.svg"
+  default_prompt: "Use $stabilizer to bring in the Stabilizer specialist for routine, recovery, energy, travel prep, and health-signal clarity."

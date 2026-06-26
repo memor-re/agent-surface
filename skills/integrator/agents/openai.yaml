@@ -1,0 +1,7 @@
+interface:
+  display_name: "Integrator"
+  short_description: "Profile APIs and source protocols"
+  brand: "memor.re"
+  icon_small: "./assets/integrator.svg"
+  icon_large: "./assets/integrator.svg"
+  default_prompt: "Use $integrator to profile a new API/source link, map its protocol, define approval gates, and prepare bounded memor.re ingestion specs."

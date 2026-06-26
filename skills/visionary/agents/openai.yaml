@@ -1,0 +1,7 @@
+interface:
+  display_name: "Visionary"
+  short_description: "memor.re Council specialist"
+  brand: "memor.re Council"
+  icon_small: "./assets/visionary.svg"
+  icon_large: "./assets/visionary.svg"
+  default_prompt: "Use $visionary to bring in the Visionary specialist for strategy, positioning, product direction, and high-leverage decisions."

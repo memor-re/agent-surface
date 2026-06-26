@@ -1,0 +1,9 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="memor.re">
+  <rect width="64" height="64" rx="14" fill="#23644F"/>
+  <circle cx="32" cy="32" r="6" fill="#FFFFFF"/>
+  <circle cx="16" cy="20" r="3.5" fill="#FFFFFF" fill-opacity="0.85"/>
+  <circle cx="48" cy="20" r="3.5" fill="#FFFFFF" fill-opacity="0.85"/>
+  <circle cx="16" cy="44" r="3.5" fill="#FFFFFF" fill-opacity="0.85"/>
+  <circle cx="48" cy="44" r="3.5" fill="#FFFFFF" fill-opacity="0.85"/>
+  <path d="M32 32 L16 20 M32 32 L48 20 M32 32 L16 44 M32 32 L48 44" stroke="#FFFFFF" stroke-opacity="0.55" stroke-width="2"/>
+</svg>

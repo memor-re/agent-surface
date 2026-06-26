@@ -1,0 +1,7 @@
+interface:
+  display_name: "Handoff"
+  short_description: "Validate handoff and closeout format."
+  brand: "memor.re"
+  icon_small: "./assets/handoff.svg"
+  icon_large: "./assets/handoff.svg"
+  default_prompt: "Use $handoff to validate this repo task against CLOSE_SUMMARY.md and return the standard closeout."

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Council"
+  short_description: "Route direct, weighted, or full memor.re Council work"
+  brand: "memor.re Council"
+  icon_small: "./assets/council.svg"
+  icon_large: "./assets/council.svg"
+  default_prompt: "Use $council to call a Council specialist, weight a full-bench route, or validate a memor.re product or operating decision."

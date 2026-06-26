@@ -1,0 +1,54 @@
+{
+  "name": "memor-re",
+  "version": "0.1.0",
+  "description": "Installable memor.re Council and product-operating workflows for Claude Code.",
+  "author": {
+    "name": "memor.re",
+    "url": "https://memor.re"
+  },
+  "homepage": "https://memor.re",
+  "repository": "https://github.com/memor-re/platform",
+  "license": "UNLICENSED",
+  "keywords": [
+    "memor-re",
+    "council",
+    "claude-code",
+    "design",
+    "skills",
+    "cleanup",
+    "integrator",
+    "learn",
+    "mcp",
+    "cli"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "memor.re",
+    "shortDescription": "Council, delivery, handoff, and product-operating workflows for Claude Code.",
+    "longDescription": "memor.re is a universal memory operating system. This plugin exposes the Council agent bench, delivery workflow skills (closer, letsgo, handoff, clean, ghosthunter, learn, integrator, task-manager, negotiator), and design/UI/values agents for Claude Code. MCP is wired via the project-root .mcp.json; no platform checkout or MEMOR_RE_PLATFORM_ROOT is required for hosted capability. Operator/developer checkout enables full workspace CLI delegation through mcp-server.mjs.",
+    "developerName": "memor.re",
+    "category": "Productivity",
+    "capabilities": [
+      "Skills",
+      "MCP"
+    ],
+    "websiteURL": "https://memor.re",
+    "defaultPrompt": [
+      "Use memor.re Council to route this product decision.",
+      "Use /letsgo to validate and ship this focused slice.",
+      "Use /closer to sequence and close this work.",
+      "Use /ghosthunter to classify stale authority and residue."
+    ],
+    "brandColor": "#23644F",
+    "composerIcon": "./assets/memor-re-mark.svg",
+    "logo": "./assets/memor-re-lockup.svg"
+  },
+  "x-memor-re": {
+    "mcpNote": "MCP is wired at the project root via .mcp.json, not inside this plugin directory. The plugin-root .mcp.json is Codex-format (hosted URL). Do not confuse the two.",
+    "surfaceRegistryId": "claude-code-plugin-projection",
+    "pluginId": "memor-re@memor-re",
+    "canonSource": "plugins/memor-re",
+    "codexPluginSibling": ".codex-plugin/plugin.json",
+    "internalDevMarketplace": ".agents/plugins/marketplace.claude-code.json"
+  }
+}

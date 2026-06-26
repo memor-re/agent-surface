@@ -1,0 +1,7 @@
+interface:
+  display_name: "Negotiator"
+  short_description: "Coach leverage and tradeoffs"
+  brand: "memor.re"
+  icon_small: "./assets/negotiator.svg"
+  icon_large: "./assets/negotiator.svg"
+  default_prompt: "Use $negotiator to assess leverage, diagnose tactics, and draft a negotiation counter without becoming the decision maker."

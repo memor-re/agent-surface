@@ -1,0 +1,7 @@
+interface:
+  display_name: "Design"
+  short_description: "Run memor.re UI/UX design loops"
+  brand: "memor.re"
+  icon_small: "./assets/design.svg"
+  icon_large: "./assets/design.svg"
+  default_prompt: "Use $design to run two UI/UX design loops with Refero, Figma, frontend, and data-viz guidance before Visionary and Infra approval."

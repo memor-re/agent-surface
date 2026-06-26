@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "memor-re": {
+      "url": "https://memor.re/api/memor-re/mcp",
+      "bearer_token_env_var": "MEMOR_RE_PLUGIN_TOKEN",
+      "startup_timeout_sec": 20,
+      "tool_timeout_sec": 60
+    }
+  }
+}

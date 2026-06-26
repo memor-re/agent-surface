@@ -1,0 +1,7 @@
+interface:
+  display_name: "Deck"
+  short_description: "Build and edit Figma presentation decks with code-level craft"
+  brand: "memor.re"
+  icon_small: "./assets/deck.svg"
+  icon_large: "./assets/deck.svg"
+  default_prompt: "Use $deck to build, edit, or validate a Figma presentation deck. Loads brand constants, index schema, Figma plugin API patterns, and quality gates before any slide work."

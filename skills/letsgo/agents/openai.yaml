@@ -1,0 +1,7 @@
+interface:
+  display_name: "Lets Go"
+  short_description: "Commit, push, and ship agreed changes"
+  brand: "memor.re"
+  icon_small: "./assets/letsgo.svg"
+  icon_large: "./assets/letsgo.svg"
+  default_prompt: "Use $letsgo to commit, push, and deploy agreed memor.re/platform changes safely."
