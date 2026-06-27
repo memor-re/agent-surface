@@ -18,7 +18,7 @@
   "distribution": {
     "model": "public-shell-private-backend",
     "publicRepo": "memor-re/agent-surface",
-    "publicRepoStatus": "proposed",
+    "publicRepoStatus": "active",
     "sourceOfTruth": "memor-re/platform",
     "mirror": "one-way-on-release",
     "supersedes": "docs/operations/memor_re_private_plugin_portability_20260613.md",

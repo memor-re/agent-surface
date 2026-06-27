@@ -1,5 +1,9 @@
 {
   "name": "memor-re",
+  "owner": {
+    "name": "memor.re",
+    "url": "https://memor.re"
+  },
   "environment": "production",
   "authority": {
     "normalUsersInstallAllowed": true,
