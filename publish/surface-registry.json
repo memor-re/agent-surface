@@ -52,6 +52,26 @@
       "notes": "Codex-format .mcp.json (hosted URL) lives at plugin root."
     }
   ],
+  "mcpTools": {
+    "purpose": "External MCP tool servers available on all surfaces. Each entry is written into the surface-specific MCP config by setup-surface-roots.mjs. Keys are resolved as env vars — never embed raw secrets in config files.",
+    "servers": {
+      "greptile": {
+        "url": "https://api.greptile.com/mcp",
+        "envKeyVar": "GREPTILE_API_KEY",
+        "headerName": "Authorization",
+        "headerPrefix": "Bearer ",
+        "note": "14-day free trial active 2026-06-28. Semantic code review MCP. Feeds forge-cr-learning-loop.mjs alongside CodeRabbit. Key set via setup-env-keys or GREPTILE_API_KEY env var."
+      }
+    },
+    "perSurfaceKeyFormat": {
+      "claude-code": "type:http + headers.Authorization",
+      "codex":       "type:http + headers.Authorization",
+      "cursor":      "type:http + headers.Authorization",
+      "docker":      "type:http + headers.Authorization"
+    },
+    "setupScript": "scripts/setup-surface-roots.mjs --tools",
+    "npmScript": "dev:setup:tools"
+  },
   "mcpFileAccess": {
     "purpose": "Canonical list of logical roots that give MCP file-access tools (PDF viewer, filesystem tools) reach beyond the project workspace root. Each surface's setup script resolves these to absolute paths and writes them to the surface-specific MCP config file.",
     "logicalRoots": [
