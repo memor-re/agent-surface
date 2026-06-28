@@ -57,6 +57,16 @@ memor.re                     product front door (this skill)
 
 Canonical specialists own decisions; their domain teams (helpers, skills, tools) are subordinate, never Council peers (see `docs/superpowers/plans/2026-06-03-council-hierarchy-routing.md`). Control agents like `ghosthunter` are reached *through* Council, never as peers of it.
 
+## Session boot (required — every fresh chat, every surface)
+
+Before routing or acting, orient this session from hosted memory. This applies whether the surface has AGENTS.md or not:
+
+1. Call `memory.list_recent` (limit: 20) — returns the user's active memory ledger.
+2. Call `memory.search` with terms matching the current task or conversation — surfaces relevant prior context.
+3. On Clerk OAuth surfaces, omit `installation_id` — the server resolves it. On legacy token surfaces, supply it from `.claude/session-orient.json` or `~/.claude/memor-re-state.json`.
+
+These two calls are your orientation packet. Never route, plan, or implement before running them — a cold start wastes the user's continuity and defeats the product.
+
 ## What `/memor-re` does
 
 1. **Route** — hand a request to Council, which owns specialist routing to the board. Prefer this over guessing an owner. `python -m memor_re.council.runtime --no-persist --json "<prompt>"`.
