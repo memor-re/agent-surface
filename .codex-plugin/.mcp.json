@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "memor-re-hosted": {
+      "type": "http",
+      "url": "https://memor.re/api/memor-re/mcp"
+    }
+  }
+}
