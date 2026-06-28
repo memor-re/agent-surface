@@ -1,7 +1,7 @@
 {
   "name": "memor-re",
   "displayName": "memor.re",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Installable memor.re Council and product-operating workflows for Claude Code.",
   "author": {
     "name": "memor.re",

@@ -1,7 +1,0 @@
-interface:
-  display_name: "Refero Design"
-  short_description: "Run reference-backed UI and product design"
-  brand: "memor.re"
-  icon_small: "./assets/refero-design.svg"
-  icon_large: "./assets/refero-design.svg"
-  default_prompt: "Use $refero-design to ground memor.re UI and product design in references before implementation."
