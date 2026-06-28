@@ -7,8 +7,8 @@
     "url": "https://memor.re"
   },
   "homepage": "https://memor.re",
-  "repository": "https://github.com/memor-re/platform",
-  "license": "UNLICENSED",
+  "repository": "https://github.com/memor-re/agent-surface",
+  "license": "MIT",
   "keywords": [
     "memor-re",
     "council",
