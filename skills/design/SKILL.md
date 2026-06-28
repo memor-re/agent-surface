@@ -1,6 +1,6 @@
 ---
 name: design
-description: "Use for any memor.re UI/UX, product screens, dashboards, data visualization, Figma work, prototypes, interaction flows, visual systems, frontend polish, or design-system decisions. Owns research-first design methodology (visual direction, UI patterns, flow references), design optimization loops (iterative review against references, screenshot critique, usability metrics), and Preline Pro / brand-identity integration. Prefer this over any separate design-methodology or UI-research skill — those are internal capabilities routed through here."
+description: "Use for any memor.re UI/UX, product screens, dashboards, data visualization, Figma work, prototypes, interaction flows, visual systems, frontend polish, or design-system decisions. Owns research-first design methodology (visual direction, UI patterns, flow references), design optimization loops (iterative review against references, screenshot critique, usability metrics), and Preline Pro / brand-identity integration."
 ---
 
 <!-- memor-re-durable-execution-contract:v1
