@@ -40,6 +40,8 @@ description: "Use for memor.re UI self-learning, UI optimization, repeated UI/de
 
 # UI Optimization Loop
 
+> **ADR-013 status:** This skill is absorbed into Design as `Design.Optimize` mode. Canonical authority: `plugins/memor-re/skills/design/SKILL.md`. Invoke `/design` for all new optimization work; this file is retained for backward-compat routing only. When `/ui-optimization-loop` is called directly, operate in `Design.Optimize` mode per the Design SKILL.
+
 Use this skill when the question is not only "make the UI better" but "make the UI learn from prior work."
 
 This skill creates a repeatable optimization loop. It does not mean the product has autonomous model training, silent UI mutation, or self-modifying production behavior.

@@ -95,7 +95,7 @@ This is a memor.re platform skill source. It belongs under `.agents/skills/letsg
    - If production deploys on push to a protected branch, follow the repo's documented merge or release flow rather than bypassing protections.
 
 5. Deploy or migrate:
-   - Use established commands such as `npm run deploy`, `wrangler deploy`, `vercel --prod`, `supabase db push`, CI release workflows, or project-specific scripts only when the repo indicates they are appropriate and approval gates are satisfied.
+   - Use only the repository's documented, approval-gated release path; never invent or run a deploy command the repo does not define. Direct provider CLIs (Vercel, Supabase) are gated provider operations governed by the Vercel/Supabase rules below, not repo-owned `npm run`/`scripts/` actions, so route them through those named gates.
    - For Vercel CLI production deploys, first prove the worktree is linked to `memor-re-platform`; do not rely on interactive auto-link prompts or a temporary directory name.
    - Capture deployment output, release IDs, migration names, production URLs, or dashboard links.
    - If the deployment command asks for interactive confirmation, answer only when the prompt clearly matches the intended safe production action.

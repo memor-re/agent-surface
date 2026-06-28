@@ -46,6 +46,8 @@ metadata:
 
 # Refero Design
 
+> **ADR-013 status:** This skill is absorbed into Design as `Design.ReferenceLink` mode. Canonical authority: `plugins/memor-re/skills/design/SKILL.md`. Invoke `/design` for all new design research; this file is retained for backward-compat routing only. When `/refero-design` is called directly, operate in `Design.ReferenceLink` mode per the Design SKILL.
+
 Refero gives agents taste and product evidence. Use it before design work instead of
 relying on generic model knowledge.
 

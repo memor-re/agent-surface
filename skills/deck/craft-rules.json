@@ -1,0 +1,476 @@
+{
+  "_meta": {
+    "description": "Deck craft rules for the /deck skill. Machine-readable; every rule follows the uniform schema below. Encodes Dontae's writing, copy, and design decisions from the POSE deck production process (June 2026).",
+    "version": "2.1.0",
+    "updated": "2026-06-27",
+    "validator": "scripts/validate-deck-copy.mjs",
+    "authority": "docs/operations/agent-rules-registry.json",
+    "schema": {
+      "copy_rules":    { "required": ["id","category","severity","rule","why"], "optional": ["test","bad","good","exception","banned_words","banned_word_notes","preferred_alternatives","mapping","approved_pov","banned_framings","approved_reframe"] },
+      "design_rules":  { "required": ["id","category","severity","rule","why"], "optional": ["test","bad","good","current_anchors","toolkit","reference_ceiling","target_balance","enforcement","figma_file","brand_kit_reference","accent_colors","reference","examples"] },
+      "structure_rules":{ "required": ["id","category","severity","rule","why"], "optional": ["test","bad","good","figma_file","entry_point","index_format_reference"] }
+    }
+  },
+
+  "_category_schemas": {
+    "copy_rules": {
+      "required": ["id", "category", "severity", "rule", "why"],
+      "optional": ["test", "bad", "good", "exception", "banned_words", "banned_word_notes", "preferred_alternatives", "mapping", "approved_pov", "banned_framings", "approved_reframe"],
+      "field_types": {
+        "id": "string",
+        "category": "string",
+        "severity": "enum:required|recommended",
+        "rule": "string",
+        "why": "string",
+        "test": "string",
+        "bad": "array<string>",
+        "good": "array<string>",
+        "exception": "string",
+        "banned_words": "array<string>",
+        "banned_word_notes": "object<string,string>",
+        "preferred_alternatives": "object<string,string>",
+        "mapping": "object",
+        "approved_pov": "string",
+        "banned_framings": "array<string>",
+        "approved_reframe": "string"
+      }
+    },
+    "design_rules": {
+      "required": ["id", "category", "severity", "rule", "why"],
+      "optional": ["test", "bad", "good", "current_anchors", "toolkit", "reference_ceiling", "target_balance", "enforcement", "figma_file", "brand_kit_reference", "accent_colors", "reference", "examples"],
+      "field_types": {
+        "id": "string",
+        "category": "string",
+        "severity": "enum:required|recommended",
+        "rule": "string",
+        "why": "string",
+        "test": "string",
+        "bad": "array<string>",
+        "good": "array<string>",
+        "current_anchors": "array<string>",
+        "toolkit": "object",
+        "reference_ceiling": "string",
+        "target_balance": "string",
+        "enforcement": "string",
+        "figma_file": "string",
+        "brand_kit_reference": "string",
+        "accent_colors": "object<string,string>",
+        "reference": "string",
+        "examples": "array<string>"
+      }
+    },
+    "structure_rules": {
+      "required": ["id", "category", "severity", "rule", "why"],
+      "optional": ["test", "bad", "good", "figma_file", "entry_point", "index_format_reference", "authority"],
+      "field_types": {
+        "id": "string",
+        "category": "string",
+        "severity": "enum:required|recommended",
+        "rule": "string",
+        "why": "string",
+        "test": "string",
+        "bad": "array<string>",
+        "good": "array<string>",
+        "figma_file": "string",
+        "entry_point": "string",
+        "index_format_reference": "string",
+        "authority": "string"
+      }
+    }
+  },
+
+  "copy_rules": [
+    {
+      "id": "no-statement-punchy-fragment",
+      "category": "headline",
+      "severity": "required",
+      "rule": "Never write slide headlines in the two-sentence 'Statement. Punchy fragment.' formula.",
+      "why": "Recognized AI writing pattern ('AI slopism') that mimics startup pitch decks. Reads as formulaic.",
+      "test": "headline must NOT match /^[A-Z].+[.!?]\\s+[A-Z][^.!?]{1,30}[.!?]?$/ — a declarative sentence followed by a short punchy fragment",
+      "bad": [
+        "Social has been given the brief. Not the system.",
+        "The brief gets smarter every time the cycle closes. Most teams break it."
+      ],
+      "good": [
+        "The operating model is what social is missing.",
+        "The brief no longer starts with the media plan."
+      ]
+    },
+    {
+      "id": "no-negation-copy",
+      "category": "copy",
+      "severity": "required",
+      "rule": "Do not communicate by negation. State what it IS, or use an explicit FROM→TO transformation. Do not lead with 'Not X', 'isn't X', or 'no longer X' as the primary message.",
+      "why": "Negation centers and repeats the wrong idea. Reads as defensive. FROM→TO is the approved transition pattern.",
+      "test": "copy must NOT open a statement with 'Not X', 'isn't X', or 'no longer X' as the slide's primary assertion — 'no longer' used mid-sentence within a FROM→TO construction that leads with the positive is permitted",
+      "bad": [
+        "POSE is not four channels",
+        "Not a dashboard",
+        "Not channel execution"
+      ],
+      "good": [
+        "POSE is one connected growth system",
+        "FROM: four disconnected channels → TO: one connected growth system",
+        "The brief no longer starts with the media plan. It starts with the cultural signal."
+      ],
+      "exception": "Verbatim protected lines (e.g. 'Creators are not a media buy') stay as written. 'No longer' is acceptable mid-sentence in a FROM→TO construction that leads with the positive."
+    },
+    {
+      "id": "no-abstract-infrastructure-jargon",
+      "category": "copy",
+      "severity": "required",
+      "rule": "Do not put abstract systems nouns front and center: 'infrastructure', 'the system / operating system', 'agentic', 'layer'.",
+      "why": "Infrastructure is real but invisible. Systems-speak makes decks generic, not marketing-specific.",
+      "test": "hero lines and sub lines must NOT lead with: infrastructure, agentic, the system, the layer, operating system (exception: 'operating model' where it is literally the product being sold)",
+      "bad": [
+        "Creators are translation infrastructure",
+        "Listening is action infrastructure",
+        "Every surface where culture becomes a cart"
+      ],
+      "good": [
+        "Creators earn the attention paid can only rent",
+        "Listening tells you what's working before the report does",
+        "Where people discover is now where they buy"
+      ]
+    },
+    {
+      "id": "no-em-dashes",
+      "category": "formatting",
+      "severity": "required",
+      "rule": "No em dashes (—) in any copy.",
+      "why": "Hard formatting rule. Use commas, periods, colons, semicolons, parentheses, or line breaks instead.",
+      "test": "copy must NOT contain the em dash character '—'",
+      "bad": ["Connected social makes paid work harder — every time the cycle closes."],
+      "good": ["Connected social makes paid work harder. Every time the cycle closes."]
+    },
+    {
+      "id": "no-banned-words",
+      "category": "copy",
+      "severity": "required",
+      "rule": "Do not use banned words or phrases.",
+      "why": "These terms are generic, vague, AI-sounding, or conflate distinct marketing disciplines.",
+      "test": "copy must NOT contain any term from banned_words (exact token match, case-insensitive, ignoring scope notes)",
+      "banned_words": [
+        "amplify",
+        "authenticity",
+        "leverage",
+        "unlock",
+        "seamlessly",
+        "robust",
+        "transformative",
+        "game-changing",
+        "holistic",
+        "ecosystem",
+        "synergy",
+        "signals",
+        "it is important to note",
+        "in today's fast-paced",
+        "now more than ever",
+        "best-in-class",
+        "thought leader",
+        "honestly",
+        "low-hanging fruit"
+      ],
+      "banned_word_notes": {
+        "amplify": "specifically banned for talent/creator context",
+        "authenticity": "banned when used as vague rationale with no behavior named",
+        "holistic": "allowed only when components are explicitly defined",
+        "ecosystem": "allowed only when components are explicitly listed",
+        "signals": "allowed only when the specific behavior or data point is named",
+        "best-in-class": "allowed only with proof cited"
+      },
+      "preferred_alternatives": {
+        "amplify": "scale, extend, run as paid",
+        "authenticity": "name the actual behavior — creator participation, audience trust",
+        "leverage": "use",
+        "signals": "name the specific behavior or data point",
+        "thought leader": "name the specific expertise"
+      },
+      "bad": ["amplify creator content", "unlock authentic engagement", "leverage synergies"],
+      "good": ["scale creator content as paid", "earn audience trust through creator participation", "use the platform's strength"]
+    },
+    {
+      "id": "headline-is-conclusion",
+      "category": "headline",
+      "severity": "required",
+      "rule": "Headlines are conclusions, not labels. Start with the answer, then context.",
+      "why": "Deck slides must earn their place. A label is not a headline. A conclusion is.",
+      "test": "headline must assert a specific, arguable claim — not simply name a section or topic",
+      "bad": ["POSE Overview", "The Operating Model", "Measurement"],
+      "good": [
+        "POSE turns four channels into one compounding system",
+        "Paid works harder when owned, shared, and earned feed it proof",
+        "The measurement model is the operating model"
+      ]
+    },
+    {
+      "id": "precise-marketing-discipline-names",
+      "category": "copy",
+      "severity": "required",
+      "rule": "Name the marketing discipline precisely. Do not use soft verbs for channels.",
+      "why": "Soft verbs (Listen, Watch, Amplify) flatten distinct disciplines. Precision signals strategic fluency.",
+      "test": "channel references must use the discipline name, not a soft verb standing alone",
+      "bad": ["Listen to the market", "Watch what's happening", "Amplify the message"],
+      "good": ["social listening + signal detection (SENSE)", "social monitoring + trend tracking", "run as paid / scale creator content"],
+      "mapping": {
+        "Listen": "social listening + cultural and market intelligence + signal detection (SENSE)",
+        "Watch": "social monitoring + trend tracking",
+        "Amplify": "scale, extend, or run as paid — never amplify",
+        "Paid social": "a channel, not a tactic",
+        "Tactics (correct examples)": [
+          "Spark Ads", "partnership ads", "boosted creator posts",
+          "allowlisting / whitelisting", "dark posts", "retargeting",
+          "paid usage extensions", "commerce-driving amplification"
+        ]
+      }
+    },
+    {
+      "id": "pose-paid-pov",
+      "category": "strategy",
+      "severity": "required",
+      "rule": "The POSE deck POV is: 'Connected social makes paid work harder.' Never denigrate paid.",
+      "why": "Spark is the #1 paid social agency in the Publicis network. The deck is pro-paid and forward.",
+      "test": "no slide should frame paid as the weak, wasteful, or failing element — paid is always the accelerant",
+      "bad": ["paid can only rent", "to the point of waste", "paid runs first, efficiency drops", "paying to force"],
+      "good": ["paid compounding on the proof the system feeds it", "connected social makes paid work harder"],
+      "approved_pov": "FROM: paid carrying the load alone. TO: paid compounding on the proof the system feeds it.",
+      "banned_framings": ["paid can only rent", "to the point of waste", "paid runs first, efficiency drops", "paying to force"],
+      "approved_reframe": "When a layer fails, the failure is DISCONNECTION, never paid being weak. Paid is the accelerant that compounds when the system feeds it proof and ready audiences."
+    },
+    {
+      "id": "bullets-without-periods-short",
+      "category": "formatting",
+      "severity": "recommended",
+      "rule": "Short bullet items do not end with periods. Do not over-template with markdown.",
+      "why": "Periods on short bullets add visual noise. Consistency with reference deck style.",
+      "test": "bullet items under 8 words should NOT end with a period",
+      "bad": ["Social listening. ", "Creator participation.", "POSE framework."],
+      "good": ["Social listening", "Creator participation", "POSE framework"]
+    }
+  ],
+
+  "design_rules": [
+    {
+      "id": "dense-slide-ratio",
+      "category": "layout",
+      "severity": "required",
+      "rule": "Approximately one dense anchor slide per 6 lighter slides.",
+      "why": "Dontae: 'for every 6 basic slides you need a dense slide. more content on slides!'",
+      "test": "deck must have at least 1 dense anchor for every 6 standard slides; flag if ratio exceeds 1:8",
+      "good": ["Slide 10: Why Publicis (dense)", "Slide 17: The POSE Stack (dense)", "Slide 27: The Diagnostic (dense)", "Slide 32: Commerce (dense)"],
+      "current_anchors": ["Slide 10: Why Publicis", "Slide 17: The POSE Stack", "Slide 27: The Diagnostic", "Slide 32: Commerce"]
+    },
+    {
+      "id": "dense-slide-toolkit",
+      "category": "layout",
+      "severity": "required",
+      "rule": "Dense anchor slides must use the full toolkit: layers, left rail, spine bar, hero glow, platform tags, right rail, legend.",
+      "why": "The toolkit is derived from the 4 reference architectures (Publicis PESO Stack, Agentic PESO OS, Measurement OS, Orbital PESO).",
+      "test": "a dense slide must have at least: left rail labels, a spine/master bar, platform/partner tags on cards, and a legend or right rail",
+      "good": ["Left rail: numbered layers", "Spine: 'POSE Orchestration' bar spanning width", "Cards: Meta·TikTok·YouTube tags", "Right rail: C-suite perspectives + legend"],
+      "toolkit": {
+        "architecture": "Layered, top-down, with DOWNWARD CONNECTOR ARROWS between layers",
+        "left_rail": "Numbered or named layers with icon",
+        "spine": "A central colored SPINE bar (core/orchestration layer)",
+        "hero_glow": "GOLD or MAGENTA GLOW on the hero layer (Spark = magenta-glow POSE band)",
+        "cards": "Each card carries real PLATFORM/PARTNER tags + a short note",
+        "right_rail": "Side panels: principles, C-suite perspectives, or operating rhythm + LEGEND",
+        "optional_devices": ["Formula band", "Playbook sequence + outcomes checklist", "Bottom signal-flow row", "Edge callouts on central metaphor"]
+      }
+    },
+    {
+      "id": "density-ceiling",
+      "category": "layout",
+      "severity": "required",
+      "rule": "Never exceed PESO Measurement OS density. Cut cells ~50% vs the densest references. Keep BIG BOLD type.",
+      "why": "Dontae: 'the attached are often too dense — strike a balance.'",
+      "test": "no single slide should have more cell count than 50% of the PESO Measurement OS reference (9 layers × many cells); big type must remain legible when projected",
+      "bad": ["9 layers each with 5+ cells and 8pt type"],
+      "good": ["4 layers, 3 cards per layer, 24pt minimum type on dark background"],
+      "reference_ceiling": "reference-peso-measurement-os — 9 layers × many cells per layer, tiny type",
+      "target_balance": "Between Publicis-Stack (clean) and Agentic-OS (rich). Aim at 70% of Agentic-OS density.",
+      "enforcement": "Density means more real substance (platforms, notes, structure), NOT smaller text."
+    },
+    {
+      "id": "dark-brand-system",
+      "category": "visual",
+      "severity": "required",
+      "rule": "LEAN-DARK brand system: dark background, magenta/gold accents, white/cream type.",
+      "why": "The Spark deck uses the lean-dark brand system. All dense slides must match it.",
+      "test": "no slide should use a white or light background; magenta is the hero accent, gold is the secondary accent",
+      "bad": ["White background slide", "Blue gradient on hero card"],
+      "good": ["Dark background, magenta-glow POSE band, gold spine bar, white type"],
+      "figma_file": "WTCQXah5tjh94gp4JfYagW",
+      "brand_kit_reference": "plugins/memor-re/skills/deck/references/brand-kit.md",
+      "accent_colors": {
+        "spark_hero": "magenta glow (POSE band highlight)",
+        "spine_bar": "gold or dark blue gradient",
+        "platform_tags": "muted / secondary palette",
+        "connector_arrows": "solid for control, dotted for data, gold-dotted for feedback"
+      }
+    },
+    {
+      "id": "no-whitespace-slides",
+      "category": "layout",
+      "severity": "required",
+      "rule": "Do not lean on whitespace. Fill the frame with real substance.",
+      "why": "Dontae: 'yours is too simple'. Empty-looking slides are underbuilt, not minimal.",
+      "test": "every slide must have a conclusion headline PLUS at least one of: data point, platform list, framework visual, or case reference",
+      "bad": ["Headline only, large empty space below", "One bullet point on a full slide"],
+      "good": ["Headline + 3 platform-tagged cards + right rail principle callouts"]
+    },
+    {
+      "id": "no-thin-duplicate-slides",
+      "category": "structure",
+      "severity": "required",
+      "rule": "Every slide must have a distinct POV. Cut duplicative thin slides.",
+      "why": "Dontae: 'every survivor needs a distinct POV, not a simple diagram saying nothing'",
+      "test": "no two slides should assert the same claim at the same level of abstraction",
+      "bad": ["Two consecutive slides both titled variations of 'The POSE Framework'"],
+      "good": ["Slide A: POSE framework overview. Slide B: How each quadrant compounds paid."]
+    },
+    {
+      "id": "downward-connector-arrows",
+      "category": "visual",
+      "severity": "required",
+      "rule": "Architecture slides use DOWNWARD CONNECTOR ARROWS between layers, not bidirectional or implied.",
+      "why": "Top-down flow reflects the activation hierarchy: capability → orchestration → measurement → activation.",
+      "test": "connector arrows on architecture slides must point downward; no horizontal-only or upward arrows unless explicitly showing a feedback loop",
+      "bad": ["Bidirectional arrows between all layers", "No arrows, implicit flow"],
+      "good": ["Arrows from capability cards down into orchestration spine, then down into activation"],
+      "reference": "reference-publicis-peso-stack: capability cards → orchestration spine → measurement/governance → activation"
+    },
+    {
+      "id": "platform-partner-tags-required",
+      "category": "content",
+      "severity": "required",
+      "rule": "Dense architecture slides must include real platform/partner tags on cards, not generic labels.",
+      "why": "Real names (Meta, Epsilon, LiveRamp) signal credibility and specificity. Generic labels are placeholders.",
+      "test": "every card on a dense slide must name at least one real platform or partner",
+      "bad": ["Paid Social: [Platform]", "Identity: [Partner]"],
+      "good": ["Paid Social: Meta·TikTok·YouTube·Snap", "Identity: Epsilon·LiveRamp"],
+      "examples": [
+        "Paid Social: Meta·TikTok·YouTube·Snap",
+        "Identity: Epsilon·LiveRamp",
+        "Commerce: Amazon·Walmart·Instacart·Kroger",
+        "Creator: Captiv8·Influential"
+      ]
+    }
+  ],
+
+  "structure_rules": [
+    {
+      "id": "figma-only",
+      "category": "tooling",
+      "severity": "required",
+      "rule": "All deck work happens in Figma. Always invoke /deck skill first, then read the deck index from the Figma file via MCP.",
+      "why": "Figma is the single source of truth for slide state. Any edit outside Figma creates drift.",
+      "test": "no slide mutation may occur without an active Figma MCP session and a confirmed deck index read",
+      "bad": ["Editing slide copy in a text editor and pasting into Figma"],
+      "good": ["Read index via Figma MCP → confirm slide → edit in Figma → update index"],
+      "figma_file": "WTCQXah5tjh94gp4JfYagW",
+      "entry_point": "plugins/memor-re/skills/deck/SKILL.md"
+    },
+    {
+      "id": "index-is-source-of-truth",
+      "category": "tooling",
+      "severity": "required",
+      "rule": "The slide index (CSV + index v5 in Figma) is the source of truth for slide count, order, and status. Never trust a verbal count.",
+      "why": "Verbal counts drift. The index is the authoritative record — it gates every slide decision.",
+      "test": "before any slide addition, removal, or reorder, the index must be read and confirmed current",
+      "bad": ["'The deck has about 45 slides' without reading the index"],
+      "good": ["Index read: 45 slides, last updated [date] — confirmed before edit"],
+      "index_format_reference": "plugins/memor-re/skills/deck/references/index-schema.md"
+    },
+    {
+      "id": "deck-skill-invocation",
+      "category": "tooling",
+      "severity": "required",
+      "rule": "Always invoke /deck skill first before making any slide changes. The skill holds state, POV, and index path.",
+      "why": "The /deck skill loads the current Figma file key, POV, and index path. Without it, edits are stateless.",
+      "test": "/deck must be invoked and confirm Figma file key before any slide read or write",
+      "bad": ["Going straight to Figma MCP without invoking /deck"],
+      "good": ["/deck → confirms WTCQXah5tjh94gp4JfYagW + index path → Figma MCP edit"],
+      "authority": "docs/operations/agent-rules-registry.json"
+    }
+  ],
+
+  "brand_system": {
+    "id": "spark-pose-deck",
+    "theme": "LEAN-DARK",
+    "figma_file": "WTCQXah5tjh94gp4JfYagW",
+    "palette": {
+      "primary_accent": "#e00058 (magenta)",
+      "fills_only": "#ae9d58 (gold — too low-contrast for text)",
+      "slide_background": "#f9f8f4 (cream)",
+      "cards": "#ffffff (white)",
+      "text": "#000000 (black)"
+    },
+    "fonts": {
+      "display": "Playfair Display (Bold, Black Italic)",
+      "sans": "Inter"
+    },
+    "pose_order": "Paid → Owned → Shared → Earned (never PESO)",
+    "protected_verbatim_lines": [
+      "Creators are not a media buy. They are translation infrastructure.",
+      "The product is not a deck. The product is repeatable judgment.",
+      "The earned question is not did we get coverage? It is what can that authority make more believable?"
+    ]
+  },
+
+  "pose_pov": {
+    "id": "connected-social-makes-paid-harder",
+    "approved_pov": "Connected social makes paid work harder.",
+    "paid_framing": "Paid built modern social and moves the most. Frame paid as the accelerant that compounds when the system feeds it proof and ready audiences.",
+    "never": [
+      "Paid can only rent",
+      "to the point of waste",
+      "paid runs first, efficiency drops",
+      "paying to force",
+      "paid alone is not enough"
+    ],
+    "channel_name": "SENSE (not Listen) is the correct step name in the POSE cycle",
+    "discipline_precision": "Name the discipline: 'social listening + cultural and market intelligence + signal detection' — not just 'Listen'"
+  },
+
+  "reference_architectures": {
+    "publicis_peso_stack": {
+      "density": "floor (too clean)",
+      "pattern": "logo/year/note cards → spine bar → activation, downward arrows",
+      "note": "Good structural reference — too simple on its own"
+    },
+    "agentic_peso_os": {
+      "density": "target",
+      "pattern": "dark+gold layered template, master bar, glow hero layer, right-rail legend",
+      "note": "Matches LEAN-DARK brand; aim for this density"
+    },
+    "peso_measurement_os": {
+      "density": "ceiling (too dense)",
+      "pattern": "9-layer structure",
+      "note": "Adopt the structure, cut cells ~50%, use big type"
+    },
+    "peso_orbital_infographic": {
+      "pattern": "central-metaphor diagram + legend + edge callouts + formula band + playbook/outcomes",
+      "note": "AVOID its negation subhead pattern"
+    },
+    "whimsical_boards": {
+      "workspace": "Dontae's Workspace (79bd37df-9432-4f84-95ab-2111baf37d33)",
+      "total_social_pose_stack": "9wTkFg3rsnP6JCzY3XS8Qb",
+      "idioms": [
+        "color-coded POSE cards",
+        "brace zone labels",
+        "objective→channel matrices",
+        "cadence rails",
+        "funnel stages",
+        "platform/partner chips"
+      ]
+    }
+  },
+
+  "ntg_community_module": {
+    "figma_file": "7aEDVkGejRDzqWhP5epqqu",
+    "slide_count": 7,
+    "competitive_data_source": "Sprinklr Q1 2026",
+    "status": "active — Sprout/Pulsar/StatSocial data pending"
+  }
+}
