@@ -52,6 +52,26 @@
       "notes": "Codex-format .mcp.json (hosted URL) lives at plugin root."
     }
   ],
+  "mcpFileAccess": {
+    "purpose": "Canonical list of logical roots that give MCP file-access tools (PDF viewer, filesystem tools) reach beyond the project workspace root. Each surface's setup script resolves these to absolute paths and writes them to the surface-specific MCP config file.",
+    "logicalRoots": [
+      { "id": "project_root",   "resolve": "cwd",                          "note": "Always included — the platform repo root." },
+      { "id": "user_home",      "resolve": "os.homedir()",                 "note": "~/  — parent of Downloads, .claude, Documents." },
+      { "id": "user_downloads", "resolve": "os.homedir()/Downloads",       "note": "Where browsers and tools drop files." },
+      { "id": "user_documents", "resolve": "os.homedir()/Documents",       "note": "Parent of home/platform worktrees." },
+      { "id": "user_claude_cfg","resolve": "os.homedir()/.claude",         "note": "Claude Code global config — settings, plugins, memory." },
+      { "id": "google_drive",   "resolve": "env:GOOGLE_DRIVE_PATH",        "note": "Machine-specific. Set GOOGLE_DRIVE_PATH env var. Windows default: ~/Google Drive/My Drive. Mac: ~/Library/CloudStorage/GoogleDrive-*/My Drive." }
+    ],
+    "perSurfaceConfigPath": {
+      "claude-code": ".mcp.json",
+      "codex":       ".codex/mcp.json",
+      "cursor":      ".cursor/mcp.json",
+      "docker":      ".codex/mcp.json"
+    },
+    "setupScript": "scripts/setup-surface-roots.mjs",
+    "npmScript": "dev:setup:roots",
+    "note": "Run npm run dev:setup:roots once per machine + surface to write the resolved roots into the correct config file. Config files are gitignored (machine-local paths). ADR-009 invariant: no secret or token is ever written — roots are plain directory paths."
+  },
   "extensionContract": {
     "howToAddASurface": [
       "1. Append a surface entry here with its manifest path, agent-metadata filename, and public install source.",
