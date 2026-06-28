@@ -61,11 +61,12 @@ Canonical specialists own decisions; their domain teams (helpers, skills, tools)
 
 Before routing or acting, orient this session from hosted memory. This applies whether the surface has AGENTS.md or not:
 
-1. Call `memory.list_recent` (limit: 20) — returns the user's active memory ledger.
-2. Call `memory.search` with terms matching the current task or conversation — surfaces relevant prior context.
-3. On Clerk OAuth surfaces, omit `installation_id` — the server resolves it. On legacy token surfaces, supply it from `.claude/session-orient.json` or `~/.claude/memor-re-state.json`.
+1. Call `workspace.status` — check `write_scope.status`. If `"read_only"`, surface the `write_scope.action` message to the user before they try to save anything.
+2. Call `memory.list_recent` (limit: 20) — returns the user's active memory ledger.
+3. Call `memory.search` with terms matching the current task or conversation — surfaces relevant prior context.
+4. On Clerk OAuth surfaces, omit `installation_id` — the server resolves it. On legacy token surfaces, supply it from `.claude/session-orient.json` or `~/.claude/memor-re-state.json`.
 
-These two calls are your orientation packet. Never route, plan, or implement before running them — a cold start wastes the user's continuity and defeats the product.
+These three calls are your orientation packet. Never route, plan, or implement before running them — a cold start wastes the user's continuity and defeats the product. A SCOPE_DENIED on memory.save is a product failure, not an error — proactively tell the user at session start.
 
 ## What `/memor-re` does
 
