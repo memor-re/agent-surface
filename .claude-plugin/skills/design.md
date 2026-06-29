@@ -1,6 +1,6 @@
 ---
 name: design
-description: "Use when memor.re UI/UX, product screens, dashboards, data visualization, Figma work, prototypes, interaction flows, visual systems, or frontend polish need Design support for Visionary and Infra before implementation or production release."
+description: "Use for any memor.re UI/UX, product screens, dashboards, data visualization, Figma work, prototypes, interaction flows, visual systems, frontend polish, or design-system decisions. Owns research-first design methodology (visual direction, UI patterns, flow references), design optimization loops (iterative review against references, screenshot critique, usability metrics), and Preline Pro / brand-identity integration."
 ---
 
 <!-- memor-re-durable-execution-contract:v1
@@ -18,7 +18,7 @@ description: "Use when memor.re UI/UX, product screens, dashboards, data visuali
     "split_brain_fencing"
   ],
   "authoritySurface": "docs/operations/canonical_agent_governance_registry.json#agents.design",
-  "journalSurface": ".codex/state/current.json + .codex/CLOSE_SUMMARY.md + docs/operations/* evidence packets + PR/check evidence",
+  "journalSurface": "hosted memory ledger (memory_list_recent + memory_search) is the orientation source of truth; docs/operations/* evidence packets and PR/check evidence are the proof surface. Host-app shell directories are never orientation or journal authority.",
   "idempotencyKey": "agent:design:active-slice:authority-surface:validation-command",
   "resumeProof": [
     "npm run agent:governance:validate",
@@ -67,7 +67,48 @@ For memor.re product UI, paid Preline Pro code assets are the implementation bas
 - Use the Preline UI Figma Community file for methodology, visual-system reference, and editable comparison frames when Figma work is required: `https://www.figma.com/design/0OQdb2zsXr3kLSZA7rfCXC/Preline-UI-Figma--Community-?t=FezOrN5GkUWfbr5n-0`.
 - Do not silently fall back to generic custom SaaS UI. If Pro block/template/plugin access, Figma access, or package integration is blocked, record the held action and keep safe local implementation or PNG proof moving.
 
-Use `refero-design` as the default research and reference-lock method. Use Figma MCP when the user mentions Figma, provides a Figma URL, or needs editable design/prototype work. Use Build Web Apps for concept-first frontend surfaces and rendered UI QA. Use Build Web Data Visualization when charts, maps, graphs, timelines, visual evidence, or dashboards shape the experience.
+## Modes (ADR-013)
+
+Design operates in three modes, absorbed from prior standalone skills per ADR-013. Use the smallest mode that fits; modes compose when the task spans both research and optimization.
+
+### Design.ReferenceLink (absorbed from refero-design)
+
+Research-first visual direction. Run before any design implementation. Mandatory when the task involves visual language, layout, component decisions, or style systems.
+
+**Three research layers:**
+1. Styles — visual direction and taste (color, type, spacing, motion, density)
+2. Screens — concrete UI patterns from shipped product screens
+3. Flows — multi-step journey logic and sequencing
+
+**Non-negotiables:**
+- Research precedes implementation. Never rely on model training data for design taste.
+- Study several strong references, synthesize a new direction. Do not copy one source.
+- Do not average references into a safe middle. Choose a dominant direction; preserve its sharp traits.
+- Create or update an interaction-control ledger for menus, sidebars, filters, sorts, row limits, pagination, and component add/remove decisions.
+- Complete loop 1 and loop 2 per element/control before moving on. Do not batch.
+
+Use Refero MCP tools (`styles`, `screens`, `flows`) when available. When unavailable, use bundled craft references in `references/` and keep the same reference-lock workflow. Store reference locks in the interaction-control ledger before implementation begins.
+
+### Design.Optimize (absorbed from ui-optimization-loop)
+
+UI learning loop. Run after loop 1 and loop 2 are complete, when the question is "what should the UI learn from prior iterations?" — not "make this look better."
+
+**Learning tiers (name the current tier before claiming self-learning):**
+1. Evidence-backed iteration — brief, Refero lock, screenshots, Council review, human feedback
+2. Documented learning loop — prior decisions become hypotheses, acceptance criteria, follow-up checks
+3. Measured optimization — behavioral or task-completion data informs ranked changes
+4. Controlled adaptive recommendations — system recommends UI changes; review required before implementation
+5. Autonomous UI mutation — **not approved for memor.re**
+
+For each optimization loop: name the current tier, record what changed and why, state the acceptance check that would confirm the change worked, and attach rendered proof. Do not advance a tier without evidence that the prior tier's acceptance check passed.
+
+### Design.Render (from frontend-design)
+
+Implementation layer. Translates reference-locked and optimized designs into Next.js App Router components using Preline Pro blocks, Tailwind CSS, `@tailwindcss/forms`, memor.re tokens, and lucide icons. Route to Infra for stack feasibility and validation gate before production movement.
+
+---
+
+Use `refero-design` as the default research and reference-lock method (invokes `Design.ReferenceLink`). Use Figma MCP when the user mentions Figma, provides a Figma URL, or needs editable design/prototype work. Use Build Web Apps for concept-first frontend surfaces and rendered UI QA. Use Build Web Data Visualization when charts, maps, graphs, timelines, visual evidence, or dashboards shape the experience.
 
 ## Design Sensibility
 

@@ -18,21 +18,22 @@ description: "Front door to the entire memor.re canon: route into Council, broad
     "split_brain_fencing"
   ],
   "authoritySurface": "docs/operations/canonical_agent_governance_registry.json#agents.memor-re",
-  "journalSurface": ".codex/state/current.json + .codex/CLOSE_SUMMARY.md + docs/operations/* evidence packets + PR/check evidence",
+  "journalSurface": "hosted memory ledger (memory_list_recent + memory_search) is the orientation source of truth; docs/operations/* evidence packets and PR/check evidence are the proof surface. Host-app shell directories are never orientation or journal authority.",
   "idempotencyKey": "agent:memor-re:active-slice:authority-surface:validation-command",
   "resumeProof": [
     "npm run agent:governance:validate",
-    "npm run close:validate"
+    "npm run close:validate",
+    "npm run agent:lifecycle:preflight"
   ],
   "sideEffectPolicy": "No external, hosted, paid, secret, destructive, or user-level mutation without approval, backup, rollback or compensation, and post-action proof.",
   "longWaitPolicy": "Represent approvals, timers, hosted refreshes, blocked actions, and human handoffs as explicit lifecycle held actions with safe next actions.",
   "rollbackPath": "Use the cited validation command plus the owning evidence packet to restore, compensate, or classify the blocker as external-held.",
   "validationCommands": [
     "npm run agent:governance:validate",
-    "npm run openai:plugin:validate"
+    "npm run agent:lifecycle:preflight"
   ],
   "scaffoldLearnState": "Act, Notice, Check, Repair, Align are required before learned, fixed, clean, ready, shipped, or durable claims.",
-  "owner": "Visionary"
+  "owner": "Council"
 }
 -->
 
@@ -56,6 +57,17 @@ memor.re                     product front door (this skill)
 ```
 
 Canonical specialists own decisions; their domain teams (helpers, skills, tools) are subordinate, never Council peers (see `docs/superpowers/plans/2026-06-03-council-hierarchy-routing.md`). Control agents like `ghosthunter` are reached *through* Council, never as peers of it.
+
+## Session boot (required — every fresh chat, every surface)
+
+Before routing or acting, orient this session from hosted memory. This applies whether the surface has AGENTS.md or not:
+
+1. Call `workspace.status` — check `write_scope.status`. If `"read_only"`, surface the `write_scope.action` message to the user before they try to save anything.
+2. Call `memory.list_recent` (limit: 20) — returns the user's active memory ledger.
+3. Call `memory.search` with terms matching the current task or conversation — surfaces relevant prior context.
+4. On Clerk OAuth surfaces, omit `installation_id` — the server resolves it. On legacy token surfaces, supply it from `.claude/session-orient.json` or `~/.claude/memor-re-state.json`.
+
+These three calls are your orientation packet. Never route, plan, or implement before running them — a cold start wastes the user's continuity and defeats the product. A SCOPE_DENIED on memory.save is a product failure, not an error — proactively tell the user at session start.
 
 ## What `/memor-re` does
 
