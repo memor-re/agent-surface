@@ -46,7 +46,8 @@
       "stabilizer": "User cognitive load, ceremony reduction, onboarding, error surface clarity",
       "learn": "Evidence packaging, ScaffoldLearn coordination, lesson registration in learn-lessons-registry.json",
       "weight-steward": "Council weight changes, specialist selection, outcome-quality scoring",
-      "ghosthunter": "Residue cleanup, stale artifacts, dead code, stale branches"
+      "ghosthunter": "Residue cleanup, stale artifacts, dead code, stale branches",
+      "design": "UI/UX gates, visual systems, design-system rules, frontend polish (Design capability team; routes to Visionary)"
     }
   },
 

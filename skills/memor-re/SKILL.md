@@ -18,7 +18,7 @@ description: "Front door to the entire memor.re canon: route into Council, broad
     "split_brain_fencing"
   ],
   "authoritySurface": "docs/operations/canonical_agent_governance_registry.json#agents.memor-re",
-  "journalSurface": ".codex/state/current.json + .codex/CLOSE_SUMMARY.md + docs/operations/* evidence packets + PR/check evidence",
+  "journalSurface": "hosted memory ledger (memory_list_recent + memory_search) is the orientation source of truth; docs/operations/* evidence packets and PR/check evidence are the proof surface. Host-app shell directories are never orientation or journal authority.",
   "idempotencyKey": "agent:memor-re:active-slice:authority-surface:validation-command",
   "resumeProof": [
     "npm run agent:governance:validate",
