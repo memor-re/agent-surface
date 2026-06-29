@@ -1,0 +1,7 @@
+interface:
+  display_name: "GTM"
+  short_description: "Run memor.re go-to-market gates"
+  brand: "memor.re"
+  icon_small: "./assets/gtm.svg"
+  icon_large: "./assets/gtm.svg"
+  default_prompt: "Use $gtm to validate memor.re launch positioning, messaging, and readiness against the encoded GTM playbook before Visionary and Values approval."

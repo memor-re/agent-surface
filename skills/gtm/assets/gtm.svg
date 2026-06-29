@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="memor.re gtm">
+  <rect x="4" y="4" width="56" height="56" rx="12" fill="#F7F7F4" stroke="#DEDED8"/>
+  <g fill="none" stroke="#00522D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="25" cy="39" r="9"/>
+    <path d="M33 31L46 18"/>
+    <path d="M37.5 18H46V26.5"/>
+  </g>
+  <title>GTM</title>
+</svg>
