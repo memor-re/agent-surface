@@ -1,0 +1,7 @@
+interface:
+  display_name: "memor.re Analytics"
+  short_description: "Measure, Regress, Report, Calibrate"
+  brand: "memor.re"
+  icon_small: "./assets/analytics.svg"
+  icon_large: "./assets/analytics.svg"
+  default_prompt: "Use $analytics to measure outcomes, detect regressions, report findings to Council owners, and calibrate thresholds based on measured evidence."
