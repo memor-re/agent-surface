@@ -77,7 +77,7 @@ Profile-specific health, career, and writing context belongs under `profiles/<pr
 
 Council owns the decision and acceptance criteria; it should delegate execution to the smallest authorized capability in the current stack.
 
-- If a tool, agent, MCP server, CLI, plugin, app connector, provider connector, or repo-local validation path is installed, authenticated, provisioned for the target environment, and appropriate for the task, call it without another sysadmin or permission check-in. Do not convert an authorized capability into a user-action blocker just because it is external to the repo.
+- If a tool, agent, MCP server, CLI, plugin, app connector, provider connector, or repo-local validation path is installed, authenticated, provisioned for the target environment, and appropriate for the task, call it for read-only or already-authorized actions without another sysadmin or permission check-in. Do not convert an authorized capability into a user-action blocker just because it is external to the repo. This does not relax the approval gates below: spend, production mutations, hosted-resource changes, destructive cleanup, and secret handling still require explicit approval even when the capability is installed and authenticated.
 - Use existing skills before inventing new procedure.
 - Use `negotiator` for leverage framing, tactic diagnosis, threshold setting, and counter-draft language when a decision is stuck on negotiation posture rather than ownership.
 - Use Superpowers-style multi-agent review when independent implementation, verification, or planning passes would materially improve quality.

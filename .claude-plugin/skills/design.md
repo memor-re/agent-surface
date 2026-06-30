@@ -230,7 +230,7 @@ Before production movement, confirm:
 - two design loops completed and recorded
 - interaction-control evidence recorded when menus, collapses, filters, sorts, row limits, pagination, or component add/remove choices changed
 - PNG contact sheets or individual PNGs were provided for design choices, with large- and small-viewport PNGs when responsive behavior matters
-- signed-in product surfaces have authenticated rendered proof before being called visually verified; Dontae has standing approval for local Clerk development auth env sync in temporary memor.re worktrees for design QA only, using `npm --prefix apps/web run env:sync:clerk-local` with `MEMOR_RE_APPROVE_LOCAL_SECRET_COPY=1`
+- signed-in product surfaces have authenticated rendered proof before being called visually verified; local Clerk development auth env sync is gated to a per-run confirmation, scoped to temporary memor.re worktrees for design QA only, using `npm --prefix apps/web run env:sync:clerk-local` with `MEMOR_RE_APPROVE_LOCAL_SECRET_COPY=1` set explicitly for that single run (no standing blanket exception; confirm each time before copying the secret)
 - major choices trace to user context, memor.re canon, Refero/Figma/design research, or product evidence
 - large- and small-viewport states were tested
 - provenance, privacy, permission, sync, conflict, review, and rollback states are visible when relevant

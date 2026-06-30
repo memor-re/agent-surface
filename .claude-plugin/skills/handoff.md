@@ -74,7 +74,7 @@ Use this sequence:
 5. Confirm production permissions and approvals:
    - Production Supabase mutations, Clerk production changes, DNS, Stripe/live payments, paid infrastructure, hosted cleanup, and destructive operations remain approval-gated unless the user explicitly approved the target action and environment
 6. For skills, verify all three layers separately:
-   - Repo-local Codex source: `.agents/skills/<name>/SKILL.md` parses as strict YAML and focused discovery/import dry-run passes
+   - Repo-local Codex source: `.agents/skills/<name>/SKILL.md` has frontmatter that parses as strict YAML and focused discovery/import dry-run passes
    - Production `/skills`: `agent_skills` row exists and latest `agent_skill_versions` row is published with expected hash/frontmatter/resources
    - Local global Codex sync: `%USERPROFILE%\.memor-re\skill-sync\config.json` and an active production sync device/connection exist before claiming production `/skills` mirrored into `%USERPROFILE%\.codex\skills`
 
