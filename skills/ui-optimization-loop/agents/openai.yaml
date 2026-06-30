@@ -1,0 +1,7 @@
+interface:
+  display_name: "UI Optimization Loop"
+  short_description: "Iterate memor.re screens against references and usability metrics"
+  brand: "memor.re"
+  icon_small: "./assets/ui-optimization-loop.svg"
+  icon_large: "./assets/ui-optimization-loop.svg"
+  default_prompt: "Use $ui-optimization-loop to run the review-critique-revise cycle — screenshot critique, comparison to references, and measurable improvement before a screen is called done."

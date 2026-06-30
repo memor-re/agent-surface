@@ -17,7 +17,7 @@ description: "Use when users or agents add new API docs, source links, MCP serve
     "crash_restart_recovery",
     "split_brain_fencing"
   ],
-  "authoritySurface": "docs/operations/canonical_agent_governance_registry.json#agents.integrator",
+  "authoritySurface": "docs/architecture/canonical_agent_governance_registry.json#agents.integrator",
   "journalSurface": "hosted memory ledger (memory_list_recent + memory_search) is the orientation source of truth; docs/operations/* evidence packets and PR/check evidence are the proof surface. Host-app shell directories are never orientation or journal authority.",
   "idempotencyKey": "agent:integrator:active-slice:authority-surface:validation-command",
   "resumeProof": [

@@ -17,7 +17,7 @@ description: "Front door to the entire memor.re canon: route into Council, broad
     "crash_restart_recovery",
     "split_brain_fencing"
   ],
-  "authoritySurface": "docs/operations/canonical_agent_governance_registry.json#agents.memor-re",
+  "authoritySurface": "docs/architecture/canonical_agent_governance_registry.json#agents.memor-re",
   "journalSurface": "hosted memory ledger (memory_list_recent + memory_search) is the orientation source of truth; docs/operations/* evidence packets and PR/check evidence are the proof surface. Host-app shell directories are never orientation or journal authority.",
   "idempotencyKey": "agent:memor-re:active-slice:authority-surface:validation-command",
   "resumeProof": [
@@ -56,7 +56,7 @@ memor.re                     product front door (this skill)
     └── control              ghosthunter (ghost_checker) · weight_steward   (cross-cutting, NOT the board)
 ```
 
-Canonical specialists own decisions; their domain teams (helpers, skills, tools) are subordinate, never Council peers (see `docs/superpowers/plans/2026-06-03-council-hierarchy-routing.md`). Control agents like `ghosthunter` are reached *through* Council, never as peers of it.
+Canonical specialists own decisions; their domain teams (helpers, skills, tools) are subordinate, never Council peers (see `docs/planning/2026-06-03-council-hierarchy-routing.md`). Control agents like `ghosthunter` are reached *through* Council, never as peers of it.
 
 ## Session boot (required — every fresh chat, every surface)
 
@@ -73,7 +73,7 @@ These three calls are your orientation packet. Never route, plan, or implement b
 
 1. **Route** — hand a request to Council, which owns specialist routing to the board. Prefer this over guessing an owner. `python -m memor_re.council.runtime --no-persist --json "<prompt>"`.
 2. **Broadcast a learning** — "teach every agent X": write it to memory and thread it into each board owner's context so the whole canon carries it forward, not one chat.
-3. **Memory mode** — set or show the active capture mode: `manual` (save on ask), `suggested` (propose for review), or `auto_reviewed` (remember-everything: milestones + trend rollups with review and undo). The lens is `council` (full bench) or a single board owner (e.g. `visionary` captures product/strategy milestones, `values` flags consent). See the memory design at `docs/superpowers/specs/2026-06-25-memor-re-canonical-plugin-surface-design.md`.
+3. **Memory mode** — set or show the active capture mode: `manual` (save on ask), `suggested` (propose for review), or `auto_reviewed` (remember-everything: milestones + trend rollups with review and undo). The lens is `council` (full bench) or a single board owner (e.g. `visionary` captures product/strategy milestones, `values` flags consent). See the memory design at `docs/design/2026-06-25-memor-re-canonical-plugin-surface-design.md`.
 
 ## Routing rule
 

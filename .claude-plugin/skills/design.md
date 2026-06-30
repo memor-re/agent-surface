@@ -17,7 +17,7 @@ description: "Use for any memor.re UI/UX, product screens, dashboards, data visu
     "crash_restart_recovery",
     "split_brain_fencing"
   ],
-  "authoritySurface": "docs/operations/canonical_agent_governance_registry.json#agents.design",
+  "authoritySurface": "docs/architecture/canonical_agent_governance_registry.json#agents.design",
   "journalSurface": "hosted memory ledger (memory_list_recent + memory_search) is the orientation source of truth; docs/operations/* evidence packets and PR/check evidence are the proof surface. Host-app shell directories are never orientation or journal authority.",
   "idempotencyKey": "agent:design:active-slice:authority-surface:validation-command",
   "resumeProof": [

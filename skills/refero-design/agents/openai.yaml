@@ -1,0 +1,7 @@
+interface:
+  display_name: "Refero Design"
+  short_description: "Source visual direction and UI pattern references for memor.re screens"
+  brand: "memor.re"
+  icon_small: "./assets/refero-design.svg"
+  icon_large: "./assets/refero-design.svg"
+  default_prompt: "Use $refero-design to gather visual direction, UI pattern references, and design precedents so memor.re screen work starts from evidence, not vibes."

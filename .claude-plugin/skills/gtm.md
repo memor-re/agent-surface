@@ -17,7 +17,7 @@ description: "Use for any memor.re go-to-market work: launch positioning, messag
     "crash_restart_recovery",
     "split_brain_fencing"
   ],
-  "authoritySurface": "docs/operations/canonical_agent_governance_registry.json#agents.gtm",
+  "authoritySurface": "docs/architecture/canonical_agent_governance_registry.json#agents.gtm",
   "journalSurface": "hosted memory ledger (memory_list_recent + memory_search) is the orientation source of truth; docs/operations/* evidence packets and PR/check evidence are the proof surface. Host-app shell directories are never orientation or journal authority.",
   "idempotencyKey": "agent:gtm:active-slice:authority-surface:validation-command",
   "resumeProof": [
@@ -61,8 +61,8 @@ node scripts/gtm-readiness.mjs           # 7/1 go/no-go: messaging, KPI stack, c
 
 ## Data surfaces
 
-- `docs/research/gtm-corpus.json` — the playbook, value drivers, KPI stack, channel mix, pricing heuristics, and the web expansion (PLG, AEO, positioning, the AI-memory category, pricing, MCP distribution).
-- `docs/research/gtm-learning-passes.json` — three rising-altitude passes (tactical, operating-model, category and moat) with the synthesis of how memor.re wins.
+- `docs/strategy/gtm-corpus.json` — the playbook, value drivers, KPI stack, channel mix, pricing heuristics, and the web expansion (PLG, AEO, positioning, the AI-memory category, pricing, MCP distribution).
+- `docs/strategy/gtm-learning-passes.json` — three rising-altitude passes (tactical, operating-model, category and moat) with the synthesis of how memor.re wins.
 - `docs/strategy/gtm-positioning.json` — the chosen category, anti-positioning guard, and the three moats.
 - `docs/strategy/gtm-launch-plan.json` — the launch readiness manifest the readiness gate validates.
 
