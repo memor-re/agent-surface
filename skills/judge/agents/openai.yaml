@@ -1,0 +1,7 @@
+interface:
+  display_name: "Judge"
+  short_description: "Cross-model consistency judge — split-brain measurement and recall verification"
+  brand: "memor.re"
+  icon_small: "./assets/judge.svg"
+  icon_large: "./assets/judge.svg"
+  default_prompt: "Use $judge [query] to run a cross-model consistency check — compares hosted and local models on a recall or factual claim and surfaces any divergence as a structured finding."
