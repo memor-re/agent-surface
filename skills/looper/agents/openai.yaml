@@ -1,0 +1,7 @@
+interface:
+  display_name: "Looper"
+  short_description: "Autonomous waterfall session driver"
+  brand: "memor.re"
+  icon_small: "./assets/looper.svg"
+  icon_large: "./assets/looper.svg"
+  default_prompt: "Use $looper [topic] to run a sustained autonomous waterfall sweep across all surfaces — env, agents, tools, connectors, plugins, skills, api, cli, mcp, local and hosted. 10-min intervals, 5h minimum."

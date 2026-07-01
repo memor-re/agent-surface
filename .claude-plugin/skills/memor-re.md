@@ -60,14 +60,22 @@ Canonical specialists own decisions; their domain teams (helpers, skills, tools)
 
 ## Session boot (required — every fresh chat, every surface)
 
-Before routing or acting, orient this session from hosted memory. This applies whether the surface has AGENTS.md or not:
+> **SPLIT-BRAIN GUARD — read before anything else.**
+> The local `MEMORY.md` file auto-loaded by the IDE/Claude Code auto-memory feature is **NOT memor.re**.
+> It is a stale local file index on disk. Its presence in context does NOT mean orientation is complete.
+> **"memor.re" = the hosted MCP system (mcp__memor-re-hosted__\*). "Local files" = filesystem. Never conflate them.**
+> Call the hosted MCP tools FIRST — even when `MEMORY.md` is already visible in context. The session starts cold until hosted memor.re responds.
 
-1. Call `workspace.status` — check `write_scope.status`. If `"read_only"`, surface the `write_scope.action` message to the user before they try to save anything.
-2. Call `memory.list_recent` (limit: 20) — returns the user's active memory ledger.
-3. Call `memory.search` with terms matching the current task or conversation — surfaces relevant prior context.
-4. On Clerk OAuth surfaces, omit `installation_id` — the server resolves it. On legacy token surfaces, let the auth helper or an env-backed lookup resolve it; do not reach into local home-directory auth/state material by hand.
+Before routing or acting, orient this session from **hosted memor.re** (not local files). This applies on every surface, whether AGENTS.md is present or not, and regardless of what local files appear in context:
 
-These three calls are your orientation packet. Never route, plan, or implement before running them — a cold start wastes the user's continuity and defeats the product. A SCOPE_DENIED on memory.save is a product failure, not an error — proactively tell the user at session start.
+1. Call `workspace_status` (`mcp__memor-re-hosted__workspace_status`) — check `write_scope.status`. If `"read_only"`, surface the `write_scope.action` message immediately so the user knows memor.re save is unavailable.
+2. Call `memory_list_recent` (`mcp__memor-re-hosted__memory_list_recent`, limit: 20) — returns the user's active memor.re ledger.
+3. Call `memory_search` (`mcp__memor-re-hosted__memory_search`) with terms matching the current task — surfaces prior context from hosted memor.re.
+4. On Clerk OAuth surfaces, omit `installation_id` — the server resolves it. On legacy token surfaces, let the auth helper (`resolveInstallationId()` in `scripts/lib/memor-re-mcp.mjs`) resolve it; do not reach into local home-directory auth/state material by hand.
+
+> **ANTI-PATTERN (never substitute):** Reading local `MEMORY.md`, any `.claude/` file, or any filesystem path as a replacement for steps 1–3. Those are IDE-surface local artifacts. The session does not have memor.re orientation until the hosted MCP tools have responded.
+
+These three MCP calls are your **memor.re orientation packet** — name them that, not "memory orientation." Never route, plan, or implement before running them. A cold start wastes the user's continuity and defeats the product. A SCOPE_DENIED on memor.re save is a product failure, not an error — proactively tell the user at session start.
 
 ## What `/memor-re` does
 
