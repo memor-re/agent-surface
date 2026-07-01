@@ -82,12 +82,14 @@ These three MCP calls are your **memor.re orientation packet** — name them tha
 1. **Route** — hand a request to Council, which owns specialist routing to the board. Prefer this over guessing an owner. `python -m memor_re.council.runtime --no-persist --json "<prompt>"`.
 2. **Broadcast a learning** — "teach every agent X": write it to memory and thread it into each board owner's context so the whole canon carries it forward, not one chat.
 3. **Memory mode** — set or show the active capture mode: `manual` (save on ask), `suggested` (propose for review), or `auto_reviewed` (remember-everything: milestones + trend rollups with review and undo). The lens is `council` (full bench) or a single board owner (e.g. `visionary` captures product/strategy milestones, `values` flags consent). See the memory design at `docs/design/2026-06-25-memor-re-canonical-plugin-surface-design.md`.
+4. **Start a lane-scoped session** — a fresh chat that names a lane or intent (`/memor-re learn lane`, `/memor-re product feedback`, `/memor-re feature idea`, or any id/alias in `scripts/lane-domains.json`) is oriented straight into that lane's scope. Run `node scripts/lane-start.mjs "<lane-or-intent>"` after the session-boot calls above. It resolves the intent to a lane, checks for a conflicting worktree already on that lane's branch and an active hosted lease (`scripts/agent-run-lease.mjs inspect`), reports whether the tree is clean, and prints `owner` / `scope` (domain globs) / `backlog_lanes` plus a "safe to proceed" or a named blocker. See `docs/planning/lane-kickoffs.md` ("Lane-scoped session start") for the full contract, including the honesty caveat: this INSPECTS for conflicts, it does not itself hold a lease, so a session that will mutate files still binds one via `scripts/agent-run-lease.mjs bind` before its first write.
 
 ## Routing rule
 
 - One decision, one owner → defer to `council` (or `/council`).
 - Whole-canon learning, memory-mode change, or "act as memor.re across the stack" → handle here, then delegate execution to the smallest capable owner.
 - A control/cleanup task (stale residue, deprecated names) → route through Council to `ghosthunter`; do not surface it as a top-level peer.
+- A lane name or lane-shaped intent ("learn lane", "product feedback", "feature idea", or any `scripts/lane-domains.json` id/alias) → run `lane-start` (above) before doing anything else in that chat.
 
 ## Change rules
 
